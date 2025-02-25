@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+  {% block content %}
+  
+  <section>
+    <div class="tabs">
+      <button class="tab active">Общественные мероприятия</button>
+      <a href="{% url 'home2_page'%}">
+        <button class="tab">Частные мероприятия</button>
+      </a>
+    </div>
+  
+    <div class="filter-bar">
+      <button class="filter active">Все</button>
+      {% for category in categories %}
+      <button class="filter">{{ category.name }}</button>
+      {% endfor %}
+    </div>
+  
+    <div class="event-list">
+      {% for eventpb in eventspb %}
+      <div class="event-card">
+        <img src="{{ eventpb.image.url }}" alt="Event Image">
+        <div class="event-details">
+          <h3>{{ eventpb.title }}</h3>
+          <p>{{ eventpb.discription|truncatechars:200 }}</p>
+          <p class="price">Цена: {{ eventpb.price }} ₸</p>
+          <p class="address">Адрес: {{ eventpb.adress }}</p>
+          <p class="rating">Дата мероприятия: {{ eventpb.date }}</p>
+          <a href="{% url 'description_page' pk=eventpb.pk %}">
+            <button class="button_desc">Обзор</button>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  
+  {% endblock %}
+
+</html>

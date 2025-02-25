@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Flow</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="#" target="_blank">
+        <img src="../media/logo.svg" alt="EF logo">
+      </a>
+      <span>Event Flow</span>
+    </div>
+
+    <div class="search-bar">
+      <img src="../media/search.svg" alt="Search">
+      <input type="text" placeholder="События, мероприятия...">
+    </div>
+
+    <div class="location">
+      <img src="../media/location.svg" alt="Location">
+      <span>Алматы</span>
+    </div>
+
+    <div class="profile">
+      <a href="#" id="dropdownToggle">
+        <img src="../media/profile.svg" alt="Profile">
+      </a>
+      <ul class="dropdown" id="dropdownMenu">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">Настройки</a></li>
+        <li><a href="#">Создать</a></li>
+        <li><a href="#">Мои мероприятия</a></li>
+        <li><a href="#">Выйти</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="container">
+    <div class="exit">
+      <div class="exit-profile">
+        <img class="profile-image" src="../image/profile.svg" alt="Profile Image">
+        <a href="#">
+          <img class="add-profile" src="../media/exit_page/add_image.svg" alt="Add Image">
+        </a>
+      </div>
+      <div class="info-profile">
+        <span>Отображаемое имя:</span>
+        <input type="text" style="outline: none;" placeholder="Например: Александр">
+        <span>Имя пользователя:</span>
+        <input type="text" style="outline: none;" placeholder="Например: Alex">
+        <div class="city-menu">
+          <span>Город:</span>
+          <select style="outline: none;" id="city" name="cities">
+            <option value="almaty">Алматы</option>
+            <option value="astana">Астана</option>
+            <option value="shymkent">Шымкент</option>
+            <option value="atyrau">Атырау</option>
+          </select>
+        </div>
+        <span>Почта:</span>
+        <input type="email" style="outline: none;" placeholder="Например: alex@email.com">
+        <div class="button-container">
+          <button class="change-btn" >Изменить пароль</button>
+          <button class="save-btn">Сохранить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</html>

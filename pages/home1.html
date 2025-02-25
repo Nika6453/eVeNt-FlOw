@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Flow</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="#" target="_blank">
+        <img src="../media/logo.svg" alt="EF logo">
+      </a>
+      <span>Event Flow</span>
+    </div>
+
+    <div class="search-bar">
+      <img src="../media/search.svg" alt="Search">
+      <input type="text" placeholder="События, мероприятия...">
+    </div>
+
+    <div class="location">
+      <img src="../media/location.svg" alt="Location">
+      <span>Алматы</span>
+    </div>
+
+    <div class="profile">
+      <a href="#" id="dropdownToggle">
+        <img src="../media/profile.svg" alt="Profile">
+      </a>
+      <ul class="dropdown" id="dropdownMenu">
+        <li><a href="home1.html">Главная</a></li>
+        <li><a href="settings.html">Настройки</a></li>
+        <li><a href="create.html">Создать</a></li>
+        <li><a href="#">Мои мероприятия</a></li>
+        <li><a href="login.html">Выйти</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <button class="tab active">Общественные мероприятия</button>
+      <a href="home2.html">
+        <button class="tab">Частные мероприятия</button>
+      </a>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter active">Все</button>
+      <button class="filter">Что-то</button>
+      <button class="filter">Еще что-то</button>
+      <button class="filter">Фильтры</button>
+    </div>
+
+    <div class="event-list">
+      <div class="event-card">
+        <img src="../media/naumov.png" alt="Event Image">
+        <div class="event-details">
+          <h3>Сольный концерт Наумова Никиты</h3>
+          <p>Lorem, Ipsum, Text, Generate, Generator, Facts, Information, What, Why, Where, Dummy Text, Typesetting, Printing, de Finibus, Bonorum et Malorum, de Finibus Bonorum et Malorum, Extremes of Good and Evil, Cicero, Latin, Garbled, Scrambled, Lorem ipsum dolor sit amet, dolor, sit amet, consectetur, adipiscing, elit, sed, eiusmod, tempor, incididunt</p>
+          <p class="price">Цена: 24 000₸</p>
+          <p class="address">Адрес: Темирязева 88</p>
+          <p class="rating">Рейтинг: 8/10 ⭐</p>
+          <a href="description.html">
+          <button class="button_desc">Обзор</button>
+          </a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <img src="../media/naumov.png" alt="Event Image">
+        <div class="event-details">
+          <h3>Сольный концерт Наумова Никиты</h3>
+          <p>Lorem, Ipsum, Text, Generate, Generator, Facts, Information, What, Why, Where, Dummy Text, Typesetting, Printing, de Finibus, Bonorum et Malorum, de Finibus Bonorum et Malorum, Extremes of Good and Evil, Cicero, Latin, Garbled, Scrambled, Lorem ipsum dolor sit amet, dolor, sit amet, consectetur, adipiscing, elit, sed, eiusmod, tempor, incididunt</p>
+          <p class="price">Цена: 24 000₸</p>
+          <p class="address">Адрес: Темирязева 88</p>
+          <p class="rating">Рейтинг: 8/10 ⭐</p>
+          <button class="button_desc">Обзор</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <p style="color: white; font-size: 32px; margin-bottom: 8px;">Event Flow</p>
+        <a href="about.html">О нас</a>
+        <a href="#">Справка</a>
+        <a href="#">Поддержка</a>
+        <a href="#">Политика конфиденциальности</a>
+      </div>
+      <div class="footer-info">
+        <a style="color: white; font-size: 32px; margin-bottom: 8px;" href="#">Ваш аккаунт</a>
+        <a href="#">Регистрация</a>
+        <a href="#">Вход</a>
+        <a href="#">Премиум</a>
+      </div>
+      <div class="footer-logo">
+        <img  src="../media/logo.svg" alt="Icon">
+      </div>
+    </div>
+    <div class="footer-subscribe">
+      <p>Подписаться на нас:</p>
+      <div class="footer-subscribe-icons">
+        <a href="#">
+          <img src="../media/logo.svg" alt="Facebook">
+          <img src="../media/logo.svg" alt="Facebook">
+          <img src="../media/logo.svg" alt="Facebook">
+          <img src="../media/logo.svg" alt="Facebook">
+          <img src="../media/logo.svg" alt="Facebook">
+          <img src="../media/logo.svg" alt="Facebook">
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script src="../javascript/script.js"></script>
+</body>
+
+</html>

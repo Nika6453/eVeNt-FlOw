@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Registration</title>
+</head>
+
+<style>
+  body {
+    background-color: #131313;
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="registration-page">
+    <img src="{% static './image/logo.svg' %}" alt="Logo">
+    <p class="registration-great">Регистрация</p>
+    <div class="registration-change">
+      <p>Уже есть аккаунт?</p><a href="{% url 'user_login' %}">Авторизуйся</a>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="registration-input">
+        <span>Имя пользователя:</span>
+        {{ form.username }}
+        <span>Пароль:</span>
+        {{ form.password1 }}
+        <span>Подтвердить пароль:</span>
+        {{ form.password2 }}
+        <button type="submit">Создать</button>
+      </div>
+    </form>
+    <span class="registration-line-text">Или</span>
+    <div class="registration-icons">
+      <a href="#"><img src="{% static './image/login-page/Google.svg' %}" alt="Google" /></a>
+      <a href="#"><img src="{% static './image/login-page/VK.svg' %}" alt="VK" /></a>
+      <a href="#"><img src="{% static './image/login-page/Facebook.svg' %}" alt="Facebook" /></a>
+      <a href="#"><img src="{% static './image/login-page/Apple.svg' %}" alt="Apple" /></a>
+    </div>
+  </div>
+</body>
+
+</html>

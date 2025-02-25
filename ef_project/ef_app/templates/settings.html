@@ -1,0 +1,40 @@
+{% extends 'header_set.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+  {% block content %}
+  <div class="container">
+    <div class="exit">
+      <div class="exit-profile">
+        <img class="profile-image" src="{% static './image/profile.svg' %}" alt="Profile Image">
+        <a href="#">
+          <img class="add-profile" src="../media/exit_page/add_image.svg'" alt="Add Image">
+        </a>
+      </div>
+      <div class="info-profile">
+        <span>Отображаемое имя:</span>
+        <input type="text" style="outline: none;" placeholder="Например: Александр">
+        <span>Имя пользователя:</span>
+        <input type="text" style="outline: none;" placeholder="Например: Alex">
+        <div class="city-menu">
+          <span>Город:</span>
+          <select style="outline: none;" id="city" name="cities">
+            <option value="almaty">Алматы</option>
+            <option value="astana">Астана</option>
+            <option value="shymkent">Шымкент</option>
+            <option value="atyrau">Атырау</option>
+          </select>
+        </div>
+        <span>Почта:</span>
+        <input type="email" style="outline: none;" placeholder="Например: alex@email.com">
+        <div class="button-container">
+          <button class="change-btn" >Изменить пароль</button>
+          <button class="save-btn">Сохранить</button>
+        </div>
+        </div>
+    </div>
+  </div>
+  {% endblock %}
+
+</html>

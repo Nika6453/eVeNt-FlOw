@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static './css/style.css' %}">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="#" target="_blank">
+        <img src="{% static './image/logo.svg' %}" alt="EF logo">
+      </a>
+      <span>Event Flow</span>
+    </div>
+
+    <div class="search-bar">
+      <img src="{% static './image/search.svg' %}" alt="Search">
+      <input type="text" placeholder="События, мероприятия...">
+    </div>
+
+    <div class="location">
+      <img src="{% static './image/location.svg' %}" alt="Location">
+      <span>Алматы</span>
+    </div>
+
+    <div class="profile">
+      <a href="#" id="dropdownToggle">
+        <img src="{% static './image/profile.svg' %}" alt="Profile">
+      </a>
+      <ul class="dropdown" id="dropdownMenu">
+        <li><a href="{% url 'home_page' %}">Главная</a></li>
+        <li><a href="#">Настройки</a></li>
+        <li><a href="{% url 'create_page' %}">Создать</a></li>
+        <li><a href="#">Мои мероприятия</a></li>
+        <li><a href="{% url 'user_login' %}">Выйти</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <script src="{% static './js/script.js' %}"></script>
+</body>
+
+</html>

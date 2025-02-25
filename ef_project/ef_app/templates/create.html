@@ -1,0 +1,49 @@
+{% extends 'header_set.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+  {% block content %}
+    <form class="event-form" id="eventForm">
+      <div class="form-left">
+        <label for="event-name">Название:</label>
+        <input type="text" id="event-name" placeholder="Введите название" required maxlength="100"/>
+
+        <label for="event-category">Категория:</label>
+        <select id="event-category" required>
+          <option value="" disabled selected>Выберите категорию</option>
+          {% for category in categories %}
+          <option value="1">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+
+        <label for="event-address">Адрес:</label>
+        <input type="text" id="event-address" placeholder="Введите адрес" required/>
+
+        <label for="event-address">Номер:</label>
+        <input type="text" id="event-address" placeholder="Введите номер" required/>
+
+        <label for="event-price">Цена:</label>
+        <div class="price-input">
+          <input type="number" id="event-price" placeholder="0" required/>
+          <span>₸</span>
+        </div>
+      </div>
+
+      <div class="form-right">
+        <label for="event-image">Изображение:</label>
+        <div class="image-upload" id="imageUpload">
+          <input type="file" id="event-image" accept="image/*">
+          <span>Вставьте сюда изображение</span>
+          <img id="previewImage" alt="Предпросмотр изображения" style="display: none; max-width: 100%; border-radius: 10px; margin-top: 10px;">
+        </div>
+      </div>
+      
+      <div class="form-bottom">
+        <label for="event-description">Описание:</label>
+        <textarea id="event-description" placeholder="Введите описание" rows="5" required></textarea>
+        <button type="submit" class="button-small">Создать</button>
+      </div>
+    </form>
+  {% endblock %}
+</html>
