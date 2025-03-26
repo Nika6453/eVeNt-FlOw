@@ -1,0 +1,55 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+  {% block content %}
+  
+  <section>
+
+    <h1 class="search-text">Результаты по поиску: "{{ query }}"</h1>
+    <h3 class="search-text">Общественные:</h3>
+    <div class="event-list">
+      {% for eventpb in eventspb %}
+      <div class="event-card">
+        <img src="{{ eventpb.image.url }}" alt="Event Image">
+        <div class="event-details">
+          <h3>{{ eventpb.title }}</h3>
+          <p>{{ eventpb.discription|truncatechars:200 }}</p>
+          <p class="price">Цена: {{ eventpb.price }} ₸</p>
+          <p class="address">Адрес: {{ eventpb.adress }}</p>
+          <p class="rating">Дата мероприятия: {{ eventpb.date }}</p>
+          <a href="{% url 'description_page' pk=eventpb.pk %}">
+            <button class="button_desc">Обзор</button>
+          </a>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+
+    <h3 class="search-text">Частные:</h3>
+      <div class="event-list">
+        <div class="event-card">
+          {% for eventpv in eventspv %}
+          <img src="{{ eventpv.image.url }}" alt="Event Image">
+          <div class="event-details">
+            <h3>{{ eventpv.title }}</h3>
+            <p>{{ eventpv.discription|truncatechars:200 }}</p>
+            <p class="price">Цена: {{ eventpv.price }} ₸</p>
+            <p class="address">Адрес: {{ eventpv.adress }}</p>
+            <p class="rating">Дата мероприятия: {{ eventpv.date }}</p>
+            <a href="{% url 'privatedesc_page' pk=eventpv.pk %}">
+              <button class="button_desc">Обзор</button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      {% endfor %}
+    </div>
+  </section>
+  
+  {% endblock %}
+
+</html>

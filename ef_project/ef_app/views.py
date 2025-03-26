@@ -1,27 +1,28 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Public, Private
+from .models import Category, Public, Private, PrivateCat
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
+from .forms import EventForm
 
 # Create your views here.
 def home_page(request):
-    categories = Category.objects.all()
+    categoriespb = Category.objects.all()
     eventspb = Public.objects.all()
 
     context = {
-        'categories': categories,
+        'categoriespb': categoriespb,
         'eventspb': eventspb
     }
     return render(request, "./home.html", context)
 
 def home2_page(request):
-    categories = Category.objects.all()
+    categoriespv = PrivateCat.objects.all()
     eventspv = Private.objects.all()
 
     context = {
-        'categories': categories,
+        'categoriespv': categoriespv,
         'eventspv': eventspv
     }
     return render(request, "./home2.html", context)
@@ -42,7 +43,7 @@ def description_page(request, pk):
 
 def privatedesc_page(request, pk):
     eventpv = get_object_or_404(Private, pk=pk)
-    eventspv = Public.objects.all()  # Получаем все мероприятия
+    eventspv = Private.objects.all()  # Получаем все мероприятия
 
     context = {
         'eventpv': eventpv,
@@ -51,7 +52,16 @@ def privatedesc_page(request, pk):
     return render(request, "./privatedesc.html", context)
 
 def create_page(request):
-    return render(request, "./create.html")
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()  # Если ModelForm
+            return redirect('home2_page')  # Замените на ваш URL
+    else:
+        form = EventForm()
+        form.fields['category'].choices = [(c.id, c.name) for c in PrivateCat.objects.all()]  # Заполняем категории
+
+    return render(request, 'create.html', {'form': form})
 
 def settings_page(request):
     return render(request, "./settings.html")
@@ -85,3 +95,44 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     return render(request, "login.html", {"form": form})
+
+def page_by_category(request, slug):
+    categorypb = get_object_or_404(Category, slug=slug)
+    eventspb = Public.objects.filter(category=categorypb)  # Изменил categorypb на category
+
+    context = {
+        'categorypb': categorypb,
+        'eventspb': eventspb
+    }
+    return render(request, "page_by_category.html", context)  # Убрал ./
+
+def page_by_category_private(request, slug):
+    categorypv = get_object_or_404(PrivateCat, slug=slug)
+    eventspv = Private.objects.filter(category=categorypv)  # Изменил categorypv на category
+
+    context = {
+        'categorypv': categorypv,
+        'eventspv': eventspv
+    }
+    return render(request, "page_by_category_private.html", context)  # Убрал ./
+
+
+def search(request):
+    query = request.GET.get('q', '').strip().lower()  # Убираем пробелы и приводим к нижнему регистру
+    print(f"Поисковый запрос: {query}")  # Выводим в консоль
+
+    eventspb = Public.objects.all()
+    eventspv = Private.objects.all()
+
+    if query:
+        eventspb = eventspb.filter(title__icontains=query)
+        eventspv = eventspv.filter(title__icontains=query)
+
+    print(f"Найдено публичных: {eventspb.count()}, приватных: {eventspv.count()}")
+
+    return render(request, 'search.html', {
+        'eventspb': eventspb,
+        'eventspv': eventspv,
+        'query': query
+    })
+

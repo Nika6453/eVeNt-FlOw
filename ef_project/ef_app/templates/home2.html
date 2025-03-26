@@ -3,7 +3,7 @@
 
 {% block title %}Главная{% endblock %}
 
-  {% block content %}
+{% block content %}
   <div class="tabs">
     <a href="{% url 'home_page'%}">
       <button class="tab">Общественные мероприятия</button>
@@ -13,29 +13,31 @@
 
   <div class="filter-bar">
     <button class="filter active">Все</button>
-    {% for category in categories %}
-    <button class="filter">{{ category.name }}</button>
+    {% for categorypv in categoriespv %}
+      <a href="{% url 'page_by_category_private' slug=categorypv.slug %}">
+        <button class="filter">{{ categorypv.name }}</button>
+      </a>
     {% endfor %}
   </div>
 
   <div class="event-list">
+    {% for eventpv in eventspv %}
     <div class="event-card">
-      {% for eventpv in eventspv %}
-      <img src="{{ eventpv.image.url }}" alt="Event Image">
+      <div class="event-image">
+        <img src="{{ eventpv.image.url }}" alt="Event Image">
+      </div>
       <div class="event-details">
         <h3>{{ eventpv.title }}</h3>
         <p>{{ eventpv.discription|truncatechars:200 }}</p>
-        <p class="price">Цена: {{ eventpv.price }}</p>
-        <p class="address">Адрес: {{ eventpv.adress }}</p>
-        <p class="rating">Дата мероприятия: {{ eventpv.date }}</p>
+        <p class="price"><strong>Цена:</strong> {{ eventpv.price }} ₸</p>
+        <p class="address"><strong>Адрес:</strong> {{ eventpv.adress }}</p>
+        <p class="rating"><strong>Дата мероприятия:</strong> {{ eventpv.date }}</p>
         <a href="{% url 'privatedesc_page' pk=eventpv.pk %}">
           <button class="button_desc">Обзор</button>
         </a>
-        {% endfor %}
       </div>
     </div>
+    {% endfor %}
   </div>
 
-  {% endblock %}
-
-</html>
+{% endblock %}

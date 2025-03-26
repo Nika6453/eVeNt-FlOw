@@ -18,10 +18,11 @@
       <span>Event Flow</span>
     </div>
 
-    <div class="search-bar">
+    <form action="{% url 'search' %}" method="GET" class="search-bar">
       <img src="{% static './image/search.svg' %}" alt="Search">
-      <input type="text" placeholder="События, мероприятия...">
-    </div>
+      <input type="text" name="q" placeholder="События, мероприятия..." value="{{ query|default:'' }}">
+      <button type="submit" style="display: none;"></button>
+    </form>
 
     <div class="location">
       <img src="{% static './image/location.svg' %}" alt="Location">
@@ -34,7 +35,7 @@
       </a>
       <ul class="dropdown" id="dropdownMenu">
         <li><a href="{% url 'home_page' %}">Главная</a></li>
-        <li><a href="#">Настройки</a></li>
+        <li><a href="{% url 'settings_page' %}">Настройки</a></li>
         <li><a href="{% url 'create_page' %}">Создать</a></li>
         <li><a href="#">Мои мероприятия</a></li>
         <li><a href="{% url 'user_login' %}">Выйти</a></li>
